@@ -1,6 +1,6 @@
 # Data Science Micro-Service (DSMS)
 
-![Gunicorn + Falcon + Python](https://i.imgur.com/2yemufX.jpg)
+![Gunicorn + Falcon + Python](https://i.imgur.com/5RycsTo.jpg)
 
 Boilerplate code for Data Science project microservice in Python
 
