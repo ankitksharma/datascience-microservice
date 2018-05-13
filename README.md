@@ -1,5 +1,7 @@
 # Data Science Micro-Service (DSMS)
 
+![Gunicorn + Falcon + Python](https://i.imgur.com/2yemufX.jpg)
+
 Boilerplate code for Data Science project microservice in Python
 
 [Gunicorn](http://gunicorn.org/) & [Falcon](https://falconframework.org/) based server which is all you'll need to expose your awesome Data Science project as microservice with your peers.
