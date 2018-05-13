@@ -1,0 +1,16 @@
+.git
+.ipynb_checkpoints/*
+/notebooks/*
+/unused/*
+Dockerfile
+.DS_Store
+.gitignore
+README.md
+softwares
+env.*
+/devops/*
+
+# To prevent storing dev/temporary container data
+/tmp/*
+data/
+model/
