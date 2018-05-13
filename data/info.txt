@@ -1,0 +1,1 @@
+Folder to keep all the data. This folder data doesn't get pushed to git. You can remove it from .gitignore if you want it to be managed by git.
