@@ -42,4 +42,4 @@ mkdir models && cp <GoogleNews-vectors-negative300.bin> models/.
 ## Usage
 `curl -X POST http://0.0.0.0:9000/`
 
-`curl -X POST http://0.0.0.0:9000/update -F 'text=Something'`
+`curl -X POST http://0.0.0.0:9000/update -d '"text":"Some text to be sent."'`

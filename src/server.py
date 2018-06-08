@@ -40,7 +40,7 @@ class UpdateResource(object):
         try:
             result = json.loads(raw_json, encoding='utf-8')
             logger.info(result['text'])
-            resp.body = json.dumps({"result": 'Successfully inserted' + result['text']})
+            resp.body = json.dumps({"result": 'Successfully inserted: ' + result['text']})
         except ValueError:
             raise falcon.HTTPError(falcon.HTTP_400, 'Invalid JSON',
                                    'Could not decode the request body. The ''JSON was incorrect.')
