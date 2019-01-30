@@ -32,3 +32,4 @@ model/*
 data/*
 !data/info.txt
 !model/info.txt
+db/

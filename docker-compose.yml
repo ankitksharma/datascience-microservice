@@ -1,0 +1,31 @@
+version: '3'
+
+services:
+  dsms:
+    image: <docker_username>/dsms:1.0.0
+    container_name: dsms
+    volumes:
+      - ./data:/dsms/data
+      - ./model:/dsms/model
+    ports:
+        - 9000:9000
+
+  mongodb:
+    image: mongo:latest
+    container_name: mongodb
+    volumes:
+      - ./db/mongodb:/data/db
+      - ./db/mongodb_config:/data/configdb
+    ports:
+        - 27017:27017
+    command: mongod
+
+volumes:
+  data:
+    driver: local
+  model:
+    driver: local
+  mongodb:
+    driver: local
+  mongodb_config:
+    driver: local
