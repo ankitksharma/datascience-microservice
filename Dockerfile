@@ -1,10 +1,5 @@
-###
-# Replace:
-# ${docker_username} -> docker_username
-# ${docker_project} -> docker_project
-# from basepy Dockerfile
-###
-FROM ${docker_username}/basepy_${docker_project}:latest
+ARG BASE_IMAGE=myorg/myapp:latest
+FROM $BASE_IMAGE
 
 USER root
 WORKDIR /

@@ -9,8 +9,12 @@ README.md
 softwares
 env.*
 /devops/*
+setup.sh
+LICENSE
+*.jpg
 
 # To prevent storing dev/temporary container data
 /tmp/*
 data/
 model/
+basepy/

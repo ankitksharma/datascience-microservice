@@ -54,7 +54,9 @@ def handle_404(req, resp):
     make_response(resp, data, status)
 
 
-api = falcon.API()
-api.add_route('/', StaticResource())
-api.add_route('/update', UpdateResource())
-api.add_sink(handle_404, '')
+def get_app():
+    api = falcon.API()
+    api.add_route('/', StaticResource())
+    api.add_route('/update', UpdateResource())
+    api.add_sink(handle_404, '')
+    return api

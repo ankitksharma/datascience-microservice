@@ -11,16 +11,14 @@ There is a [Docker](https://www.docker.com/) file also added to dockerize you co
 ## Setup
 ### Install using Docker
 ```
-# 1. Make necessary changes to basepy/Dockerfile & project Dockerfile
+# 1. Setup by running `setup.sh` file
+./setup.sh
 
-# 2. Build Docker file
-docker build -t dsms .
+# 2. Run Docker image
+docker run -p 9000:9000 -t <docker_username>/dsms1:1.0.0
 
-# 3. Run Docker image
-docker run -p 9000:9000 -t dsms
-
-# 4. Run bash
-docker run -it dsms /bin/bash
+# 3. Run bash
+docker run -it <docker_username>/dsms1:1.0.0 /bin/bash
 ```
 
 ### Install from scratch
@@ -30,10 +28,7 @@ conda create -n dsms python=2.7
 source activate dsms
 
 # Install dependencies
-pip install -r basepy/pip_requirements.txt
-
-# Create "models" directory & put word2vec model in it
-mkdir models && cp <GoogleNews-vectors-negative300.bin> models/.
+pip install -r basepy/py/pip_requirements.txt
 
 # Run the service
 ./run.sh
