@@ -1,41 +1,73 @@
 name: dsms
 channels:
-  - menpo
   - conda-forge
-  - anaconda-fusion
   - defaults
+  - intel
+  - anaconda
 dependencies:
-  - ca-certificates=2018.11.29
-  - certifi=2018.11.29
-  - libcxx=7.0.0
-  - libffi=3.2.1
-  - llvm-meta=7.0.0
-  - ncurses=6.1
-  - openssl=1.0.2p
-  - pip=19.0.1
-  - python=2.7.15
-  - readline=7.0
-  - setuptools=40.7.1
-  - sqlite=3.26.0
-  - tk=8.6.9
-  - wheel=0.32.3
-  - zlib=1.2.11
+  - ca-certificates=2020.12.5=h033912b_0
+  - certifi=2020.12.5=py39h6e9494a_1
+  - libcxx=11.0.1=habf9029_0
+  - libffi=3.3=h046ec9c_2
+  - ncurses=6.2=h2e338ed_4
+  - openssl=1.1.1i=h35c211d_0
+  - pip=21.0.1=pyhd8ed1ab_0
+  - python=3.9.1=h2502468_5_cpython
+  - python_abi=3.9=1_cp39
+  - readline=8.0=h0678c8f_2
+  - setuptools=49.6.0=py39h6e9494a_3
+  - sqlite=3.34.0=h17101e1_0
+  - tk=8.6.10=h0419947_1
+  - tzdata=2021a=he74cb21_0
+  - wheel=0.36.2=pyhd3deb0d_0
+  - xz=5.2.5=haf1e3a3_1
+  - zlib=1.2.11=h7795811_1010
   - pip:
+    - backports-csv==1.0.7
+    - beautifulsoup4==4.9.3
     - bz2file==0.98
-    - chardet==3.0.4
-    - click==6.7
-    - decorator==4.3.0
-    - docutils==0.14
-    - falcon==1.4.1
-    - futures==3.2.0
-    - gunicorn==19.7.1
-    - idna==2.6
-    - jmespath==0.9.3
-    - pattern==2.6
-    - python-dateutil==2.6.1
+    - cffi==1.14.4
+    - chardet==4.0.0
+    - cheroot==8.5.2
+    - cherrypy==18.6.0
+    - click==7.1.2
+    - cryptography==3.3.1
+    - decorator==4.4.2
+    - docutils==0.16
+    - falcon==2.0.0
+    - feedparser==6.0.2
+    - future==0.18.2
+    - futures==3.1.1
+    - gunicorn==20.0.4
+    - idna==2.10
+    - jaraco-classes==3.2.0
+    - jaraco-collections==3.1.0
+    - jaraco-functools==3.1.0
+    - jaraco-text==3.4.0
+    - jmespath==0.10.0
+    - joblib==1.0.0
+    - lxml==4.6.2
+    - more-itertools==8.6.0
+    - mysqlclient==2.0.3
+    - nltk==3.5
+    - numpy==1.20.0
+    - pattern==3.6
+    - pdfminer-six==20201018
+    - portend==2.7.0
+    - pycparser==2.20
+    - python-dateutil==2.8.1
+    - python-docx==0.8.10
     - python-mimeparse==1.6.0
-    - pytz==2018.4
-    - requests==2.18.4
-    - six==1.11.0
-    - urllib3==1.22
+    - pytz==2020.5
+    - regex==2020.11.13
+    - requests==2.25.1
+    - scipy==1.6.0
+    - sgmllib3k==1.0.0
+    - six==1.15.0
+    - sortedcontainers==2.3.0
+    - soupsieve==2.1
+    - tempora==4.0.1
+    - tqdm==4.56.0
+    - urllib3==1.26.3
+    - zc-lockfile==2.0
 

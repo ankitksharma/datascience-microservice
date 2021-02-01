@@ -3,7 +3,7 @@
 project_name="dsms"
 docker_username="anktksh"
 project_version=1.0.0
-anaconda=true # false will use python 2.7
+anaconda=true # false will use python 3
 push_images=false
 
 basedir=`pwd`

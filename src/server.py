@@ -1,6 +1,6 @@
 import falcon
 import json
-from logger import logging
+from src.logger import logging
 logger = logging.getLogger(__name__)
 
 
@@ -25,7 +25,7 @@ class UpdateResource(object):
         # Return note for particular ID
         if req.get_param("id"):
             resp.body = json.dumps({"result": "we got:" + req.get_param("id")})
-            make_response(resp, {"result": "SUCCESS"}, falcon.HTTP_200)
+            make_response(resp, resp.body, falcon.HTTP_200)
         else:
             resp.body = "Service to host data science project"
 
@@ -34,16 +34,16 @@ class UpdateResource(object):
         """Handles POST requests"""
         try:
             raw_json = req.stream.read()
+            logger.info(f'RECEIVED: {raw_json}')
         except Exception as ex:
             raise falcon.HTTPError(falcon.HTTP_400, 'Error', ex.message)
 
         try:
-            result = json.loads(raw_json, encoding='utf-8')
+            result = json.loads(raw_json)
             logger.info(result['text'])
             resp.body = json.dumps({"result": 'Successfully inserted: ' + result['text']})
         except ValueError:
-            raise falcon.HTTPError(falcon.HTTP_400, 'Invalid JSON',
-                                   'Could not decode the request body. The ''JSON was incorrect.')
+            raise falcon.HTTPError(falcon.HTTP_400, 'Invalid JSON', "Could not decode the request body. The ''JSON was incorrect.")
 
 
 def handle_404(req, resp):

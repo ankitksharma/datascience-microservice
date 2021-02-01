@@ -15,7 +15,7 @@ There is a [Docker](https://www.docker.com/) file also added to dockerize you co
 ./setup.sh
 
 # 2. Run Docker image
-docker run -p 9000:9000 -t <docker_username>/dsms1:1.0.0
+docker run -p 8000:8000 -t <docker_username>/dsms1:1.0.0
 
 # 3. Run bash
 docker run -it <docker_username>/dsms1:1.0.0 /bin/bash
@@ -24,7 +24,7 @@ docker run -it <docker_username>/dsms1:1.0.0 /bin/bash
 ### Install from scratch
 ```
 # Create virtual environment (optional)
-conda create -n dsms python=2.7
+conda create -n dsms python=3
 source activate dsms
 
 # Install dependencies
@@ -35,6 +35,8 @@ pip install -r basepy/py/pip_requirements.txt
 ```
 
 ## Usage
-`curl -X POST http://0.0.0.0:9000/`
+`curl -X POST http://localhost:8000/`
 
-`curl -X POST http://0.0.0.0:9000/update -d '{"text":"Some text to be sent."}'`
+`curl -X POST http://localhost:8000/update -d '{"text":"Some text to be sent."}'`
+
+`curl -XGET http://localhost:8000/update?id=10`

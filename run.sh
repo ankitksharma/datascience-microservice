@@ -18,8 +18,7 @@ echo '
 exec gunicorn "src.server:get_app()" \
 --workers 1 \
 --timeout 1000 \
---bind=0.0.0.0:9000 \
 --max-requests 20 \
 --preload \
 --reload \
---log-level=info
+--log-level=debug
