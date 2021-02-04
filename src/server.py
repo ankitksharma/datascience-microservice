@@ -1,6 +1,7 @@
 import falcon
 import json
 from src.logger import logging
+from .heart_rate import *
 logger = logging.getLogger(__name__)
 
 
@@ -58,5 +59,6 @@ def get_app():
     api = falcon.API()
     api.add_route('/', StaticResource())
     api.add_route('/update', UpdateResource())
+    api.add_route('/calc_bpm', heart_rate_controller.CalculateHeartRate())
     api.add_sink(handle_404, '')
     return api
