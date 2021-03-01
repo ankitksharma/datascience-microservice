@@ -16,25 +16,32 @@ def calc_bpm(a, fps):
     max_bps = -1
     min_bps = 10
     bucket_i = 0
+    num_non_empty_buckets = 0
     while True:
         bucket = y2[int(bucket_i * bucket_size_secs * fps): int(
             (bucket_i + 1) * bucket_size_secs * fps)]  # use decay weights
         if bucket.shape[0] <= 0: break
+        bucket_i += 1
         sig_fft, power, sample_freq = get_fft_sig(bucket, 1 / fps)
-        max_fq_arr = find_max_frequencies_within_range(power, sample_freq, freq_limits, 2)
+        max_fq_arr = find_max_frequencies_within_range(np.square(power), sample_freq, freq_limits, 2)
+        if (max_fq_arr.shape[0] == 0):
+            continue
+        num_non_empty_buckets += 1
         max_fq, min_fq = max(max_fq_arr), min(max_fq_arr)
         max_fq_mean = np.mean(max_fq_arr) if abs(max_fq - min_fq) * 60 <= max_bpm_diff_for_mean else max_fq
         if not math.isnan(max_fq_mean):
             sum_max_freq += max_fq_mean
-        bucket_i += 1
+
         peaks2, _ = find_peaks(bucket, distance=7.5, prominence=2)  # BEST!
         max_bps = max(max_bps, peaks2.shape[0] * fps / bucket.shape[0])
         min_bps = min(min_bps, peaks2.shape[0] * fps / bucket.shape[0])
         bucket_bps = peaks2.shape[0] * fps / (bucket.shape[0])
         print(f'{bucket_i} {bucket_bps * 60} {max_fq_arr * 60} {sum_max_freq * 60}')
         sum_avg_bps += bucket_bps
-    avg_max_freq = sum_max_freq / bucket_i
-    return avg_max_freq * 60
+    if (num_non_empty_buckets > 0):
+        avg_max_freq = sum_max_freq / num_non_empty_buckets
+        return avg_max_freq * 60
+    return -1
 
 
 def get_max_power_frequencies(bucket, fps, freq_limits):
@@ -67,7 +74,8 @@ def filter_on_frequency_range(frequencies, powers, req_range):
 
 
 def filter_on_power_k_order_statistic(power, n_max):
-    return np.argpartition(power, -n_max)[-n_max:]
+    safe_n_max = min(n_max, power.shape[0])
+    return np.argpartition(power, -safe_n_max)[-safe_n_max:]
 
 
 def get_min_max(dim, max_limit, min_limit):
